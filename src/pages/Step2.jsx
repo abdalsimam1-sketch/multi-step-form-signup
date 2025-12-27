@@ -31,7 +31,7 @@ export const Step2 = () => {
         style={{ borderRadius: "1rem" }}
       >
         <div
-          className="col-12 col-md-4 left-side  shadow p-5 text-capitalize d-flex justify-content-between d-md-inline"
+          className="col-12 col-md-4 left-side  shadow p-5 text-capitalize d-flex justify-content-between d-md-inline "
           style={{
             backgroundSize: "cover",
 
@@ -91,7 +91,7 @@ export const Step2 = () => {
             <p className="text-muted">
               you have the option of monthly or yearly billing
             </p>
-            <div className="row mt-3 mt-md-5 gap-3  position-relative p-4 d-flex flex-column align-items-center flex-md-row">
+            <div className="row mt-3 mt-md-5   position-relative p-2 d-flex  flex-column align-items-center flex-md-row gap-2 ">
               <div
                 onClick={() => {
                   setFormData({
@@ -103,7 +103,7 @@ export const Step2 = () => {
                 className="col-6 mx-auto col-lg-3 plan  shadow h-100  "
                 style={{
                   borderRadius: "1rem",
-                  height: "7rem",
+                  width: "auto",
                 }}
               >
                 <img src={arcade} alt="" className="p-3 " />
@@ -122,7 +122,7 @@ export const Step2 = () => {
                   });
                 }}
                 className="col-6  mx-auto col-lg-3 plan shadow  h-100"
-                style={{ borderRadius: "1rem" }}
+                style={{ borderRadius: "1rem", width: "auto" }}
               >
                 <img src={advanced} alt="" className="p-3" />
                 <div>
@@ -142,6 +142,7 @@ export const Step2 = () => {
                 className="col-6  mx-auto col-lg-3 plan shadow  h-100"
                 style={{
                   borderRadius: "1rem",
+                  width: "auto",
                 }}
               >
                 <img src={pro} alt="" className="p-3" />
