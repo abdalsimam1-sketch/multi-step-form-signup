@@ -88,7 +88,7 @@ export const Step3 = () => {
           </div>
         </div>
         <div
-          className="col-12 col-md-7 p-5 text-capitalize shadow position-relative"
+          className="col-12 col-md-7 p-3 text-capitalize shadow position-relative"
           style={{
             backgroundSize: "cover",
             height: "80vh",
@@ -110,7 +110,7 @@ export const Step3 = () => {
                     price: addOnPrices["online service"],
                   })
                 }
-                className="d-flex align-items-center shadow justify-content-between p-3 mb-4"
+                className=" d-flex align-items-center shadow justify-content-between p-3 mb-4"
                 style={{ borderRadius: "1rem" }}
               >
                 <input
