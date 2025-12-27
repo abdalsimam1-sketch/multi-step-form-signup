@@ -100,7 +100,7 @@ export const Step2 = () => {
                     planPrice: planPrices["arcade"],
                   });
                 }}
-                className="col-5 col-md-3 plan  shadow h-100  "
+                className="col-6 mx-auto col-lg-3 plan  shadow h-100  "
                 style={{
                   borderRadius: "1rem",
                   height: "7rem",
@@ -121,7 +121,7 @@ export const Step2 = () => {
                     planPrice: planPrices["advanced"],
                   });
                 }}
-                className="col-5 col-md-3 plan shadow  h-100"
+                className="col-6  mx-auto col-lg-3 plan shadow  h-100"
                 style={{ borderRadius: "1rem" }}
               >
                 <img src={advanced} alt="" className="p-3" />
@@ -139,7 +139,7 @@ export const Step2 = () => {
                     planPrice: planPrices["pro"],
                   });
                 }}
-                className="col-5 col-md-3 plan shadow  h-100"
+                className="col-6  mx-auto col-lg-3 plan shadow  h-100"
                 style={{
                   borderRadius: "1rem",
                 }}
