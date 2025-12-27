@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import sideBarPic from "../assets/images/bg-sidebar-desktop.svg";
 import { useNavigate, Link } from "react-router-dom";
 import arcade from "../assets/images/icon-arcade.svg";
@@ -15,6 +15,14 @@ export const Step2 = () => {
       return;
     }
     navigate("/step3");
+  };
+  useEffect(() => {
+    console.log(formData.plan);
+  }, [formData.plan]);
+  const planPrices = {
+    arcade: 9,
+    advanced: 12,
+    pro: 15,
   };
   return (
     <>
@@ -86,7 +94,11 @@ export const Step2 = () => {
             <div className="row mt-5 gap-3 justify-content-center position-relative p-2 ">
               <div
                 onClick={() => {
-                  setFormData({ ...formData, plan: "arcade" });
+                  setFormData({
+                    ...formData,
+                    plan: "arcade",
+                    planPrice: planPrices["arcade"],
+                  });
                 }}
                 className="col-3 plan d-flex flex-column justify-content-between shadow "
                 style={{
@@ -102,6 +114,13 @@ export const Step2 = () => {
                 </div>
               </div>
               <div
+                onClick={() => {
+                  setFormData({
+                    ...formData,
+                    plan: "advanced",
+                    planPrice: planPrices["advanced"],
+                  });
+                }}
                 className="col-3 plan shadow"
                 style={{ borderRadius: "1rem" }}
               >
@@ -113,6 +132,13 @@ export const Step2 = () => {
                 </div>
               </div>
               <div
+                onClick={() => {
+                  setFormData({
+                    ...formData,
+                    plan: "pro",
+                    planPrice: planPrices["pro"],
+                  });
+                }}
                 className="col-3 plan shadow"
                 style={{
                   borderRadius: "1rem",

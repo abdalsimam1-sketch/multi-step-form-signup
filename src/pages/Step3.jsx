@@ -1,8 +1,39 @@
-import React from "react";
-import sideBarPic from "../assets/images/bg-sidebar-desktop.svg";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+
+import { Link, useNavigate } from "react-router-dom";
+import { useFormData } from "../Context/Context";
 
 export const Step3 = () => {
+  const { formData, setFormData } = useFormData();
+  const navigate = useNavigate();
+  const handleAddOns = (addon) => {
+    setFormData((prev) => {
+      const alreadySelected = prev.addOns.some((a) => a.name === addon.name);
+
+      return {
+        ...prev,
+        addOns: alreadySelected
+          ? prev.addOns.filter((a) => a.name !== addon.name)
+          : [...prev.addOns, addon],
+      };
+    });
+  };
+  const addOnPrices = {
+    "online service": 1,
+    "larger storage": 2,
+    "customizable profile": 2,
+  };
+  useEffect(() => {
+    console.log(formData.addOns);
+  }, [formData.addOns]);
+
+  const handleNext = () => {
+    if (formData.addOns.length === 0) {
+      alert("please choose on of the add ons");
+    } else {
+      navigate("/step4");
+    }
+  };
   return (
     <>
       <div
@@ -73,10 +104,23 @@ export const Step3 = () => {
           <form action="">
             <div className="col-12">
               <div
+                onClick={() =>
+                  handleAddOns({
+                    name: "online service",
+                    price: addOnPrices["online service"],
+                  })
+                }
                 className="d-flex align-items-center shadow justify-content-between p-3 mb-4"
                 style={{ borderRadius: "1rem" }}
               >
-                <input type="checkbox" className="me-3" />
+                <input
+                  type="checkbox"
+                  className="me-3"
+                  checked={formData.addOns.some(
+                    (a) => a.name === "online service"
+                  )}
+                  onChange={(e) => e.stopPropagation()}
+                />
                 <div className="me-auto">
                   <h6 className="m-0">online service</h6>
                   <span className="text-muted">
@@ -88,10 +132,25 @@ export const Step3 = () => {
               </div>
 
               <div
+                onClick={() =>
+                  handleAddOns({
+                    name: "larger storage",
+                    price: addOnPrices["larger storage"],
+                  })
+                }
                 style={{ borderRadius: "1rem" }}
                 className="d-flex shadow align-items-center p-3 mb-4 "
               >
-                <input type="checkbox" name="" id="" className="me-3" />
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  className="me-3"
+                  checked={formData.addOns.some(
+                    (a) => a.name === "larger storage"
+                  )}
+                  onChange={(e) => e.stopPropagation()}
+                />
                 <div>
                   <h6 className="m-0">larger storage</h6>
                   <span className="text-muted">extra 1tB of clould save</span>
@@ -100,10 +159,22 @@ export const Step3 = () => {
               </div>
 
               <div
+                onClick={() =>
+                  handleAddOns({
+                    name: "customizable profile",
+                    price: addOnPrices["customizable profile"],
+                  })
+                }
                 style={{ borderRadius: "1rem" }}
                 className="d-flex align-items-center shadow  p-3"
               >
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={formData.addOns.some(
+                    (a) => a.name === "customizable profile"
+                  )}
+                  onChange={(e) => e.stopPropagation()}
+                />
                 <div className="ms-3">
                   <h6 className="m-0">customizable profile</h6>
                   <span className="text-muted">
@@ -117,8 +188,10 @@ export const Step3 = () => {
             <button
               className="btn btn-primary text-capitalize position-absolute"
               style={{ right: "2.7rem", bottom: "2rem" }}
+              onClick={handleNext}
             >
-              Next Step
+              {" "}
+              Next Step{" "}
             </button>
             <Link to="/step2">
               <button

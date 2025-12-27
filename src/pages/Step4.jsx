@@ -1,6 +1,6 @@
 import React from "react";
 import sideBarPic from "../assets/images/bg-sidebar-desktop.svg";
-
+import { Link } from "react-router-dom";
 export const Step4 = () => {
   return (
     <>
@@ -27,7 +27,7 @@ export const Step4 = () => {
           </div>
           <div className="row mb-3">
             <div className="col-2">
-              <i className="bi bi-2-circle-fill fs-3"></i>
+              <i className="bi bi-2-circle fs-3"></i>
             </div>
 
             <div className="col-8 ms-2">
@@ -47,7 +47,7 @@ export const Step4 = () => {
           </div>
           <div className="row ">
             <div className="col-2">
-              <i className="bi bi-4-circle fs-3"></i>
+              <i className="bi bi-4-circle-fill fs-3"></i>
             </div>
             <div className="col-8 ms-2">
               <p className="fw-bold m-0">step 4</p>
@@ -64,13 +64,26 @@ export const Step4 = () => {
             borderRadius: "1rem",
           }}
         >
+          <h1>finishing up</h1>
+          <p className="text-muted">
+            double-check everything looks OK before confirming
+          </p>
           <form action="">
+            <div className="col-10"></div>
             <button
               className="btn btn-primary text-capitalize position-absolute"
               style={{ right: "2.7rem", bottom: "2rem" }}
             >
               Submit
             </button>
+            <Link to="/step3">
+              <button
+                className="btn btn-tertiary text-capitalize position-absolute"
+                style={{ left: "2.7rem", bottom: "2rem" }}
+              >
+                Back
+              </button>
+            </Link>
           </form>
         </div>
       </div>

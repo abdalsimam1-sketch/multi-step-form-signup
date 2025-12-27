@@ -9,6 +9,7 @@ export const FormProvider = ({ children }) => {
     number: "",
     password: "",
     plan: "",
+    planPrice: 0,
     billing: "monthly",
     addOns: [],
   });

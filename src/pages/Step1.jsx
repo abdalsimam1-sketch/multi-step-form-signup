@@ -19,22 +19,22 @@ export const Step1 = () => {
   return (
     <>
       <div
-        className="row justify-content-center align-items-center m-5 p-5 shadow gap-3 col-12 mx-auto col-md-12  col-lg-8  "
+        className="row align-items-stretch justify-content-center align-items-center m-5 p-5 shadow gap-3 col-12 mx-auto col-lg-8  "
         style={{ borderRadius: "1rem" }}
       >
         <div
-          className="col-4 left-side  shadow p-5 text-capitalize"
+          className="col-12 col-md-4 left-side shadow p-5 text-capitalize d-flex justify-content-between align-items-center d-md-inline "
           style={{
             backgroundSize: "cover",
-            height: "80vh",
+
             fontSize: "0.9rem",
           }}
         >
           <div className="row mb-3 ">
             <div className="col-2">
-              <i className="bi bi-1-circle-fill fs-3"></i>
+              <i className="bi bi-1-circle-fill fs-3 m-0"></i>
             </div>
-            <div className="col-8  ms-2">
+            <div className="col-8  ms-2 d-none d-md-inline">
               <p className="m-0 fw-bold">step 1</p>
               <span className="text-muted">your info </span>
             </div>
@@ -44,7 +44,7 @@ export const Step1 = () => {
               <i className="bi bi-2-circle fs-3"></i>
             </div>
 
-            <div className="col-8 ms-2">
+            <div className="col-8 ms-2 d-none d-md-inline">
               <p className="m-0 fw-bold">step 2</p>
               <span>select plan</span>
             </div>
@@ -54,23 +54,23 @@ export const Step1 = () => {
               {" "}
               <i className="bi bi-3-circle fs-3"></i>
             </div>
-            <div className="col-8 ms-2">
+            <div className="col-8 ms-2 d-none d-md-inline">
               <p className="m-0 fw-bold">step 3</p>
               <span>add-ons</span>
             </div>
           </div>
           <div className="row ">
             <div className="col-2">
-              <i className="bi bi-4-circle fs-3"></i>
+              <i className="bi bi-4-circle fs-3 "></i>
             </div>
-            <div className="col-8 ms-2">
+            <div className="col-8 ms-2 d-none d-md-inline">
               <p className="fw-bold m-0">step 4</p>
               <span>summary</span>
             </div>
           </div>
         </div>
         <div
-          className="col-7 p-5 text-capitalize shadow position-relative"
+          className="col-12 col-md-7 p-5 text-capitalize shadow position-relative "
           style={{
             backgroundSize: "cover",
             height: "80vh",
