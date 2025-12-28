@@ -17,8 +17,8 @@ export const Step2 = () => {
     navigate("/step3");
   };
   useEffect(() => {
-    console.log(formData.plan);
-  }, [formData.plan]);
+    console.log(formData);
+  }, [formData]);
   const planPrices = {
     arcade: 9,
     advanced: 12,
@@ -97,7 +97,7 @@ export const Step2 = () => {
                   setFormData({
                     ...formData,
                     plan: "arcade",
-                    planPrice: planPrices["arcade"],
+                    planPrice: planPrices.arcade,
                   });
                 }}
                 className="col-6 mx-auto col-lg-3 plan  shadow h-100  "
@@ -118,7 +118,7 @@ export const Step2 = () => {
                   setFormData({
                     ...formData,
                     plan: "advanced",
-                    planPrice: planPrices["advanced"],
+                    planPrice: planPrices.advanced,
                   });
                 }}
                 className="col-6  mx-auto col-lg-3 plan shadow  h-100"
@@ -136,7 +136,7 @@ export const Step2 = () => {
                   setFormData({
                     ...formData,
                     plan: "pro",
-                    planPrice: planPrices["pro"],
+                    planPrice: planPrices.pro,
                   });
                 }}
                 className="col-6  mx-auto col-lg-3 plan shadow  h-100"

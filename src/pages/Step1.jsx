@@ -3,6 +3,7 @@ import sideBarPic from "../assets/images/bg-sidebar-desktop.svg";
 import { Link } from "react-router-dom";
 import { useFormData } from "../Context/Context";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Step1 = () => {
   const { formData, setFormData } = useFormData();
@@ -15,6 +16,10 @@ export const Step1 = () => {
       e.target.reportValidity();
     }
   };
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   return (
     <>
@@ -59,7 +64,7 @@ export const Step1 = () => {
               <span>add-ons</span>
             </div>
           </div>
-          <div className="row ">
+          <div className="row mb-3">
             <div className="col-2">
               <i className="bi bi-4-circle fs-3 "></i>
             </div>

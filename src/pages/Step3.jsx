@@ -24,10 +24,10 @@ export const Step3 = () => {
     "customizable profile": 2,
   };
   useEffect(() => {
-    console.log(formData.addOns);
-  }, [formData.addOns]);
+    console.log(formData);
+  }, [formData]);
 
-  const handleNext = () => {
+  const handleNext = (e) => {
     if (formData.addOns.length === 0) {
       alert("please choose on of the add ons");
     } else {
@@ -101,8 +101,8 @@ export const Step3 = () => {
             {" "}
             add-ons help enhance your gaming experience
           </p>
-          <form action="">
-            <div className="col-12">
+          <form>
+            <div className="col-12 ">
               <div
                 onClick={() =>
                   handleAddOns({
@@ -110,7 +110,7 @@ export const Step3 = () => {
                     price: addOnPrices["online service"],
                   })
                 }
-                className=" d-flex align-items-center shadow justify-content-between p-3 mb-4"
+                className=" d-flex align-items-center shadow justify-content-between p-3 mt-5 mb-4"
                 style={{ borderRadius: "1rem" }}
               >
                 <input
@@ -189,12 +189,14 @@ export const Step3 = () => {
               className="btn btn-primary text-capitalize position-absolute"
               style={{ right: "2.7rem", bottom: "2rem" }}
               onClick={handleNext}
+              type="button"
             >
               {" "}
               Next Step{" "}
             </button>
             <Link to="/step2">
               <button
+                type="button"
                 className="btn btn-tertiary text-capitalize position-absolute"
                 style={{ left: "2.7rem", bottom: "2rem" }}
               >
