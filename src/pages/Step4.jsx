@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useFormData } from "../Context/Context";
-import { useEffect } from "react";
+import { use, useEffect } from "react";
+
 export const Step4 = () => {
   const { formData, setFormData } = useFormData();
   useEffect(() => {
@@ -108,13 +109,15 @@ export const Step4 = () => {
             <span className="text-primary fw-bold fs-6">${total}</span>
           </div>
 
-          <button
-            type="submit"
-            className="btn btn-primary text-capitalize position-absolute"
-            style={{ right: "2.7rem", bottom: "2rem" }}
-          >
-            Submit
-          </button>
+          <Link to="/welcome">
+            <button
+              type="submit"
+              className="btn btn-primary text-capitalize position-absolute"
+              style={{ right: "2.7rem", bottom: "2rem" }}
+            >
+              Submit
+            </button>
+          </Link>
           <Link to="/step3">
             <button
               className="btn btn-tertiary text-capitalize position-absolute"
