@@ -1,20 +1,21 @@
-import React, { use, useState } from "react";
-import sideBarPic from "../assets/images/bg-sidebar-desktop.svg";
-import { Link } from "react-router-dom";
 import { useFormData } from "../Context/Context";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useAuth } from "../Context/AuthContext";
 
 export const Step1 = () => {
   const { formData, setFormData } = useFormData();
+  const { signUp } = useAuth();
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (e.target.checkValidity()) {
-      navigate("/step2");
-    } else {
-      e.target.reportValidity();
+
+    try {
+      await signUp(formData.email, formData.password);
+    } catch (error) {
+      console.error(error);
     }
+    navigate("/step2");
   };
 
   useEffect(() => {
@@ -118,7 +119,7 @@ export const Step1 = () => {
               phone number{" "}
             </label>
             <input
-              type="phone number"
+              type="tel"
               className="form-control mb-3"
               value={formData.number}
               onChange={(e) =>

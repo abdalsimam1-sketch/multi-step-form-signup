@@ -1,6 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
 export const Step0 = () => {
+  const navigate = useNavigate();
+  const { login, googleLogin } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleGoogle = async () => {
+    try {
+      await googleLogin();
+      navigate("/welcome");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await login(email, password);
+      navigate("/welcome");
+    } catch (error) {
+      if (error.code === "auth/user-not-found") {
+        alert("user not found");
+      } else if (error.code === "auth/wrong-password") {
+        alert("incorrect password");
+      } else {
+        alert("please try again");
+      }
+      console.error(error);
+    }
+  };
   return (
     <>
       <div
@@ -12,21 +42,39 @@ export const Step0 = () => {
           style={{ borderRadius: "1rem" }}
         >
           <h1>Sign In</h1>
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <label htmlFor="email" className="form-label mt-5">
               email
             </label>
-            <input type="text" name="" id="" className="form-control" />
+            <input
+              type="text"
+              name=""
+              className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
             <label htmlFor="password" className="form-label">
               password
             </label>
-            <input type="text" name="" id="" className="form-control mb-5" />
-            <button className="btn btn-secondary form-control mb-4">
+            <input
+              type="password"
+              name=""
+              className="form-control mb-5"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              className="btn btn-secondary form-control mb-4"
+              type="submit"
+            >
               Log In{" "}
             </button>
 
-            <i className="bi bi-google btn btn-secondary form-control mb-4">
+            <i
+              onClick={handleGoogle}
+              className="bi bi-google btn btn-secondary form-control mb-4"
+            >
               {" "}
               Log In With Google{" "}
             </i>

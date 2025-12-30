@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormData } from "../Context/Context";
-import { use, useEffect } from "react";
+import { useEffect } from "react";
+import { useAuth } from "../Context/AuthContext";
 
 export const Step4 = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const { formData, setFormData } = useFormData();
   useEffect(() => {
     console.log(formData);
@@ -13,6 +16,11 @@ export const Step4 = () => {
   };
   const total = addtotal() + formData.planPrice;
 
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
   return (
     <>
       <div

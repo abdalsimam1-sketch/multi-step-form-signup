@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useFormData } from "../Context/Context";
+import { useAuth } from "../Context/AuthContext";
 
 export const Step3 = () => {
+  const { user } = useAuth();
   const { formData, setFormData } = useFormData();
   const navigate = useNavigate();
   const handleAddOns = (addon) => {
@@ -26,6 +28,12 @@ export const Step3 = () => {
   useEffect(() => {
     console.log(formData);
   }, [formData]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handleNext = (e) => {
     if (formData.addOns.length === 0) {

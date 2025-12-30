@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
-import sideBarPic from "../assets/images/bg-sidebar-desktop.svg";
 import { useNavigate, Link } from "react-router-dom";
 import arcade from "../assets/images/icon-arcade.svg";
 import advanced from "../assets/images/icon-advanced.svg";
 import pro from "../assets/images/icon-pro.svg";
 import { useFormData } from "../Context/Context";
+import { useAuth } from "../Context/AuthContext";
+import { useEffect } from "react";
 
 export const Step2 = () => {
+  const { user } = useAuth();
   const { formData, setFormData } = useFormData();
   const navigate = useNavigate();
   const handleNext = () => {
@@ -19,6 +20,12 @@ export const Step2 = () => {
   useEffect(() => {
     console.log(formData);
   }, [formData]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
   const planPrices = {
     arcade: 9,
     advanced: 12,
@@ -162,7 +169,7 @@ export const Step2 = () => {
             </button>
             <Link to="/">
               <button
-                type="submit"
+                type="button"
                 className="btn  btn-lg btn-tertiary text-capitalize position-absolute"
                 style={{ left: "2.7rem", bottom: "2rem" }}
               >
